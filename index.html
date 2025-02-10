@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><center>JS Problem Solving</center></title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>JavaScript Problem Solving</h1>
+        <nav>
+            <button onclick="showProblem('atm-problem')">ATM</button>
+            <button onclick="showProblem('shopping-problem')">Online Shopping</button>
+            <button onclick="showProblem('grading-problem')">Student Grading System</button>
+            <button onclick="showProblem('traffic-problem')">Smart Traffic Light System</button>
+            <button onclick="showProblem('movie-problem')">Book Movie Ticket</button>
+            <button onclick="showProblem('job-problem')">Job Application Filter</button>
+            <button onclick="showProblem('coupon-problem')">E-commerce Coupon Redemption</button>
+            <button onclick="showProblem('fitness-problem')">Fitness Membership Plan</button>
+            <button onclick="showProblem('electricity-problem')">Electricity Bill Calculator</button>
+            <button onclick="showProblem('flight-problem')">Flight Ticket Booking System</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- ATM Withdrawal -->
+        <section id="atm-problem" class="problem-card" style="display: none;">
+            <h2>ATM Withdrawal</h2>
+            <div class="input-group">
+                <label for="atm-set-pin">Set PIN:</label>
+                <input type="password" id="atm-set-pin" placeholder="Enter your four-digit PIN">
+            </div>
+            <div class="input-group">
+                <label for="atm-entered-pin">Enter PIN:</label>
+                <input type="password" id="atm-entered-pin" placeholder="Enter your four-digit PIN">
+            </div>
+            <div class="input-group">
+                <label for="atm-balance">Enter Balance:</label>
+                <input type="number" id="atm-balance" placeholder="Enter your balance">
+            </div>
+            <div class="input-group">
+                <label for="atm-amount">Enter Amount:</label>
+                <input type="number" id="atm-amount" placeholder="Enter amount to withdraw">
+            </div>
+            <button onclick="solveATM()">Withdraw</button>
+            <p id="atm-result" class="result"></p>
+        </section>
+
+        <!-- Online Shopping -->
+        <section id="shopping-problem" class="problem-card" style="display: none;">
+            <h2>Online Shopping Discount & Free Shipping</h2>
+            <div class="order-section">
+                <label for="order-amount">Order Amount:</label>
+                <input type="number" id="order-amount" placeholder="Enter order amount">
+                <button onclick="solveShopping()">Buy Now</button>
+            </div>
+            <div class="calculation-results">
+                <p>Discount Amount: $<span id="discount-amount">0.00</span></p>
+                <p>Shipping Amount: $<span id="shipping-amount">0.00</span></p>
+                <p>Final Amount: $<span id="final-amount">0.00</span></p>
+            </div>
+        </section>
+
+        <!-- Student Grading System -->
+        <section id="grading-problem" class="problem-card" style="display: none;">
+            <h2>Student Grading System</h2>
+            <div class="input-group">
+                <label for="marks">Marks:</label>
+                <input type="number" id="marks">
+            </div>
+            <div class="input-group">
+                <label for="attendance">Attendance (%):</label>
+                <input type="number" id="attendance">
+            </div>
+            <button onclick="solveGrading()">Calculate Grade</button>
+            <p id="grading-result" class="result"></p>
+        </section>
+
+        <!-- Smart Traffic Light System -->
+        <section id="traffic-problem" class="problem-card" style="display: none;">
+            <h2>Smart Traffic Light System</h2>
+            <div class="input-group">
+                <label for="traffic-density">Traffic Density:</label>
+                <select id="traffic-density">
+                    <option value="Heavy Traffic">Heavy Traffic</option>
+                    <option value="Moderate Traffic">Moderate Traffic</option>
+                    <option value="Light Traffic">Light Traffic</option>
+                </select>
+            </div>
+            <button onclick="solveTraffic()">Check Signal Time</button>
+            <p id="traffic-result" class="result"></p>
+        </section>
+
+        <!-- Book Movie Ticket -->
+        <section id="movie-problem" class="problem-card" style="display: none;">
+            <h2>Book Movie Ticket</h2>
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age">
+            </div>
+            <div class="input-group">
+                <label for="show-time">Show Time:</label>
+                <input type="time" id="show-time">
+            </div>
+            <button onclick="solveMovie()">Calculate Price</button>
+            <p id="movie-result" class="result"></p>
+        </section>
+
+        <!-- Fitness Membership Plan -->
+        <section id="fitness-problem" class="problem-card" style="display: none;">
+            <h2>Fitness Membership Plan</h2>
+            <div class="input-group">
+                <label for="plan-type">Plan Type:</label>
+                <select id="plan-type">
+                    <option value="Basic">Basic</option>
+                    <option value="Premium">Premium</option>
+                    <option value="VIP">VIP</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="wants-trainer">Do You Want a Trainer?</label>
+                <input type="checkbox" id="wants-trainer">
+            </div>
+            <div class="input-group">
+                <label for="wants-diet-plan">Do You Want a Diet Plan?</label>
+                <input type="checkbox" id="wants-diet-plan">
+            </div>
+            <button onclick="solveFitness()">Suggest Plan</button>
+            <p id="fitness-result" class="result"></p>
+        </section>
+
+        <!-- Flight Ticket Booking System -->
+        <section id="flight-problem" class="problem-card" style="display: none;">
+            <h2>Flight Ticket Booking System</h2>
+            <div class="input-group">
+                <label for="class-type">Class Type:</label>
+                <select id="class-type">
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First">First</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="luggage-weight">Luggage Weight (kg):</label>
+                <input type="number" id="luggage-weight">
+            </div>
+            <div class="input-group">
+                <label for="is-student">Is This for a Student?</label>
+                <input type="checkbox" id="is-student">
+            </div>
+            <div class="input-group">
+                <label for="is-senior">Is This for a Senior Citizen?</label>
+                <input type="checkbox" id="is-senior">
+            </div>
+            <button onclick="solveFlight()">Calculate Fare</button>
+            <p id="flight-result" class="result"></p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
